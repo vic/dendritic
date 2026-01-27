@@ -107,14 +107,14 @@ and it can be split when it grows too large or too complex.
 - [Horizon Haskell](https://gitlab.horizon-haskell.net/nix/gitlab-ci)
 - [Gaétan Lepage](https://github.com/GaetanLepage/nix-config) ([acknowledgment commit](https://github.com/GaetanLepage/nix-config/commit/3ed89eae1a8e13c1910eac5f89f2cdb4f48756ff))
 - [bivsk](https://github.com/bivsk/nix-iv) ([adoption pull request](https://github.com/bivsk/nix-iv/pull/2))
-- [Michael Belsanti](https://tangled.org/belsanti.xyz/nixconfig/tree/den)
+- [Michael Belsanti](https://tangled.org/quasigod.xyz/nixconfig)
 
 ## See also
 
 - [vic/dendrix/Dendritic](https://vic.github.io/dendrix/Dendritic.html) - on the benefits of the pattern
 - [vic/den](https://github.com/vic/den) - aspect-oriented dendritic framework
 - [vic/dendritic-unflake](https://github.com/vic/dendritic-unflake) - non-flake, non-flake-parts examples
-
+  
 ## Community
 
 - [GitHub Discussions](https://github.com/mightyiam/dendritic/discussions)
