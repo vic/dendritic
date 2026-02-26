@@ -1,0 +1,33 @@
+---
+title: denful
+description: "A LazyVim-like distribution of pre-configured Dendritic modules — facets for common use cases that just work. Work in progress."
+---
+
+import { Card, CardGrid, LinkButton, Aside } from '@astrojs/starlight/components';
+
+<Aside type="caution" title="Work in Progress">
+denful is under active development. The API and available facets are evolving. Contributions and feedback are welcome.
+</Aside>
+
+**denful** provides a catalog of ready-made [Den](https://den.oeiuwq.com/) aspects that you can mix into your Dendritic configurations. Think of it as a LazyVim-like distribution: battle-tested defaults for common use cases, so you spend less time configuring and more time building.
+
+## Features
+
+- **No Nix wizardry required** — designed for beginners, but extensible for experts
+- **Minimalistic and interoperable** — incrementally enable just what you need
+- **All module classes** — supports NixOS, Darwin, Home-Manager, and more
+- **Multi-host, multi-user** — high module reuse across configurations
+- **Secrets management** — built-in support
+- **Automatic documentation** — self-documenting facets
+- **Flake-agnostic** — experimental support for non-flake usage
+
+## Role in the Ecosystem
+
+denful sits on top of `den` and `flake-aspects`, providing a curated layer of pre-configured modules. It is the user-facing distribution that makes the Dendritic ecosystem accessible to newcomers while remaining composable for advanced users.
+
+
+---
+
+<LinkButton href="https://github.com/vic/denful" variant="secondary" icon="external">Source Code</LinkButton>
+
+<LinkButton href="/sponsor/" icon="heart" variant="minimal">Support this project</LinkButton>

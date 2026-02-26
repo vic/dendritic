@@ -1,0 +1,70 @@
+---
+title: Why Dendritic Nix?
+description: The motivation, history, and vision behind the Dendritic Nix ecosystem.
+---
+
+import { Aside, LinkButton } from '@astrojs/starlight/components';
+
+<Aside>
+If you are new to Dendritic Nix, you might want to read what [Dendritic](https://github.com/mightyiam/dendritic) means and the [FAQ](https://github.com/Doc-Steve/dendritic-design-with-flake-parts/wiki/FAQ) first.
+</Aside>
+
+## The core idea
+
+<Aside type="tip" icon="star" title="Motivation">
+The Dendritic ecosystem was built for being able to **share re-usable, parametric, cross-class Nix configurations**.
+</Aside>
+
+The purpose is **social** more than purely technical. These tools are an exploration on how to take Nix module sharing to a higher level — literally, since dendritic modules contain one or more classic non-dendritic modules.
+
+## The problem
+
+Before Dendritic tools existed, every Nix configuration — even those following a dendritic style — was not made with re-usability in mind. User-specifics and host-specifics were always baked in. Evaluating a single module often demanded downloading all of the owner's particular inputs.
+
+The Nix community has a copy-paste culture: people re-invent the wheel in infinite ways because there is no good mechanism to share composable configuration units.
+
+**The problem is feature composability.**
+
+## Functions are the answer
+
+Being a fan of functional programming, the most composable things are functions:
+
+```nix
+# Just like any NixOS module can be a function:
+{ pkgs, ... }: { <nixos-settings> }
+
+# A dendritic aspect is a function returning multi-class configs:
+{ host, user }: {
+  nixos = { pkgs, ... }: { <nixos-settings> };
+  darwin = { pkgs, ... }: { <darwin-settings> };
+}
+```
+
+This exploration produced [flake-aspects](https://github.com/vic/flake-aspects) — a zero-dependency library focused on composability, not on wiring or building configurations.
+
+flake-aspects allows aspects to be:
+- **Parametric** — using the Nix `__functor` pattern
+- **Nestable** — tree-structured, not flat `flake.modules` with string-based semantics
+- **Composable** — declaring real dependencies between aspects, not stringly-typed references
+
+## The ecosystem grew from there
+
+[den](https://github.com/vic/den) builds upon flake-aspects to answer specific NixOS/Darwin questions: how to define hosts and users, how to create schemas, how to include features across entities, how hosts and users configure each other bidirectionally.
+
+[flake-file](https://github.com/vic/flake-file) makes modules truly self-contained — they can declare their own flake inputs using real Nix language features.
+
+[import-tree](https://github.com/vic/import-tree) enables selecting subsets of a repository — since all Dendritic files have the same semantic meaning, you can cherry-pick exactly the parts you need.
+
+[dendrix](https://github.com/vic/dendrix) ties it all together as a community index of browsable, importable aspects found across GitHub.
+
+## The vision
+
+Imagine a world where:
+- You can browse a catalog of well-tested Nix configuration aspects
+- Cherry-picking an aspect automatically brings its required inputs
+- Configurations compose cleanly across NixOS, Darwin, and Home-Manager
+- Sharing a configuration is as simple as publishing a Nix module
+
+That is what the Dendritic ecosystem is building toward. And it needs your help to get there.
+
+<LinkButton href="/sponsor/" icon="heart" variant="secondary">Become a Sponsor</LinkButton>

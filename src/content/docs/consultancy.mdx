@@ -1,0 +1,59 @@
+---
+title: Nix Consultancy
+description: Victor Borja provides Nix consulting for security-focused development environments, reproducible builds, and cloud provisioning.
+---
+
+import { Card, CardGrid, LinkButton, Aside } from '@astrojs/starlight/components';
+
+Victor provides **Nix consulting** for organizations that need reproducible, secure development environments and cloud infrastructure. Based in Mexico City, he works with teams across Latin America and globally.
+
+## What I help with
+
+<CardGrid>
+  <Card title="Dev Environment Provisioning" icon="laptop">
+    Reproducible developer setups with NixOS and Home-Manager. Every engineer on your team gets the same tools, same versions, same behavior — no more "works on my machine."
+  </Card>
+  <Card title="Security Hardening" icon="approve-check">
+    Nix provides cryptographic guarantees on every dependency. Auditable build graphs, hermetic builds, and reproducible deployments eliminate entire classes of supply-chain vulnerabilities.
+  </Card>
+  <Card title="Cloud & CI Provisioning" icon="setting">
+    NixOS-based server infrastructure, container-less deployments, and CI pipelines built on Nix. Deterministic builds from development to production.
+  </Card>
+  <Card title="Migration & Training" icon="open-book">
+    Incremental adoption strategies — from adding a single `shell.nix` to full NixOS infrastructure. Training for your engineering team on Nix fundamentals and Dendritic patterns.
+  </Card>
+</CardGrid>
+
+## Clients in Mexico
+
+Three organizations in Mexico are currently using Nix with Victor's guidance:
+
+<CardGrid>
+  <Card title="Financial services firm" icon="approve-check">
+    Adopted NixOS for **security-hardened development environments**. Every developer workstation is provisioned from a reproducible NixOS configuration, ensuring compliance with internal security policies and auditability of all installed software.
+  </Card>
+  <Card title="Software consultancy" icon="rocket">
+    Uses Nix for **cross-project development environment provisioning**. Teams switch between client projects with different toolchains (Java, Python, Node.js) instantly via Nix flakes — no global installs, no version conflicts.
+  </Card>
+  <Card title="Cloud infrastructure startup" icon="setting">
+    Deployed **NixOS-based cloud provisioning** for their platform. Server configurations are version-controlled, testable, and rollback-safe. CI pipelines use Nix for deterministic builds across staging and production.
+  </Card>
+</CardGrid>
+
+## Why Nix?
+
+- **Reproducibility** — builds are deterministic, byte-for-byte identical across machines
+- **Security** — every dependency is pinned by hash, eliminating supply-chain attacks
+- **Rollbacks** — atomic system updates with instant rollback on failure
+- **Multi-project** — developers work on multiple projects without dependency conflicts
+- **Auditability** — the entire dependency graph is inspectable and verifiable
+
+## Engagement
+
+Consulting engagements are flexible — from a few hours of guidance to ongoing infrastructure support. Victor brings the same quality and depth to client work as to his open-source ecosystem.
+
+<LinkButton href="mailto:vborja@apache.org" icon="external" variant="secondary">Contact for consulting</LinkButton>
+
+---
+
+<LinkButton href="/hire/" variant="minimal" icon="right-arrow">Looking for a full-time role? See hiring page</LinkButton>

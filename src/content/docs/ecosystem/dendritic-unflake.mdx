@@ -1,0 +1,47 @@
+---
+title: dendritic-unflake
+description: Example Dendritic Nix configurations that work without flakes — unflake, npins, builtins, froyo, falake, and flake-parts branches.
+---
+
+import { Card, CardGrid, LinkButton } from '@astrojs/starlight/components';
+
+**dendritic-unflake** demonstrates that Dendritic Nix is not tied to flakes. It provides multiple example setups — one per branch — showing how to use Dendritic patterns with different Nix input strategies.
+
+## Branches
+
+Each branch is a complete, self-contained example:
+
+| Branch | Strategy | Description |
+|--------|----------|-------------|
+| [unflake](https://github.com/vic/dendritic-unflake/tree/main) | `with-inputs` | Default entry point using `with-inputs` for input resolution |
+| [npins](https://github.com/vic/dendritic-unflake/tree/npins) | `npins` | Pin inputs with the npins tool |
+| [builtins](https://github.com/vic/dendritic-unflake/tree/builtins) | `builtins` | Use Nix builtins to fetch inputs directly |
+| [froyo](https://github.com/vic/dendritic-unflake/tree/froyo) | `froyo` | Experimental parts like module system |
+| [falake](https://github.com/vic/dendritic-unflake/tree/falake) | `falake` | Top-level modules via [falake](https://codeberg.org/FrdrCkII/falake) |
+| [flake-parts](https://github.com/vic/dendritic-unflake/tree/flake-parts) | `flake-parts` | Standard flake-parts **without** flakes! |
+
+## Usage
+
+Build a NixOS configuration without flakes:
+
+```nix
+nixos-rebuild build --file . --attr nixosConfigurations.my-laptop
+```
+
+Or with plain `nix-build`:
+
+```nix
+nix-build --attr nixosConfigurations.my-laptop.config.system.build.toplevel
+```
+
+## Role in the Ecosystem
+
+`dendritic-unflake` proves that Dendritic patterns are **flake-agnostic**. It ties together `with-inputs`, `flake-file`, and `flake-aspects` to show that composable configurations work regardless of your input strategy.
+
+This is important because the Nix community is not settled on flakes even it was discovered with flakes+flake-parts. Dendritic works for everyone.
+
+---
+
+<LinkButton href="https://github.com/vic/dendritic-unflake" variant="secondary" icon="external">Source Code</LinkButton>
+<LinkButton href="https://discourse.nixos.org/t/dendritic-unflake-example-dendritic-setup-without-flakes-nor-flake-parts/73069/5" variant="minimal" icon="external">Discourse post</LinkButton>
+<LinkButton href="/sponsor/" icon="heart" variant="minimal">Support this project</LinkButton>

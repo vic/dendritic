@@ -1,0 +1,43 @@
+---
+title: checkmate
+description: Dendritic flake checker — treefmt and nix-unit for CI with zero dependencies.
+---
+
+import { LinkButton, Aside } from '@astrojs/starlight/components';
+
+<Aside type="tip">
+[checkmate](https://github.com/vic/checkmate) bundles treefmt and nix-unit into a reusable CI pipeline for any Nix flake.
+</Aside>
+
+## What it does
+
+checkmate provides a standardized CI pipeline for Nix projects:
+
+- **Formatting** — nixfmt, deadnix, mdformat, yamlfmt via treefmt
+- **Unit testing** — nix-unit integration with the target flake as `inputs.target`
+- **Zero setup** — just point it at your flake
+- **GitHub CI template** — one command generates a complete CI workflow
+- **Extensible** — add custom checks via Dendritic modules
+
+## Usage
+
+```console
+# Check a flake
+nix flake check github:vic/checkmate --override-input target .
+
+# Format code
+nix run github:vic/checkmate#fmt --override-input target .
+
+# Bootstrap CI for your project
+nix flake new -t github:vic/checkmate ./checkmate
+```
+
+## Who uses it
+
+Every project in the Dendritic ecosystem uses checkmate for CI — den, flake-aspects, flake-file, dendrix, and import-tree.
+
+## Links
+
+<LinkButton href="https://github.com/vic/checkmate" icon="github" variant="secondary">Source Code</LinkButton>
+
+<LinkButton href="/sponsor/" icon="heart" variant="minimal">Support this project</LinkButton>

@@ -1,0 +1,44 @@
+---
+title: with-inputs
+description: Flake-inputs resolution for Nix projects that don't use flake.nix.
+---
+
+import { LinkButton, Aside } from '@astrojs/starlight/components';
+
+<Aside type="tip">
+[with-inputs](https://github.com/vic/with-inputs) provides the same inputs resolution experience as real Nix flakes — `follows`, nested `follows`, per-sub-input overrides — using pre-fetched sources from npins, local checkouts, or any other source.
+</Aside>
+
+## What it does
+
+with-inputs bridges the gap between flake and non-flake Nix. It provides flake-compatible input resolution without requiring `flake.nix`:
+
+```nix
+let
+  sources = import ./npins;
+  with-inputs = import ./with-inputs.nix;
+  outputs = inputs: { };
+in
+with-inputs sources { } outputs
+```
+
+It is **not** an inputs lock mechanism or fetcher — those already exist (npins, unflake, nixlock, nixtamal). with-inputs handles resolution: follows, overrides, and `inputs.self`.
+
+## Key features
+
+- Full flake-compatible `follows` and nested `follows`
+- Per-sub-input overrides and local checkout support
+- `inputs.self` available just like in flakes
+- Dependency introspection
+- Works with npins, unflake, or any source-fetching mechanism
+- Compatible with [flake-file](https://github.com/vic/flake-file) for input management
+
+## Role in the ecosystem
+
+with-inputs completes the Dendritic ecosystem's "no flakes required" story. Combined with [flake-file](https://github.com/vic/flake-file) (which can populate npins) and [import-tree](https://github.com/vic/import-tree), you get a fully Dendritic setup running on stable Nix without any experimental features.
+
+## Links
+
+<LinkButton href="https://github.com/vic/with-inputs" icon="github" variant="secondary">Source Code</LinkButton>
+
+<LinkButton href="/sponsor/" icon="heart" variant="minimal">Support this project</LinkButton>

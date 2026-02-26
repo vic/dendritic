@@ -1,0 +1,46 @@
+---
+title: import-tree
+description: Recursively import Nix modules from a directory tree — simple, extensible, widely adopted.
+---
+
+import { LinkButton, Aside } from '@astrojs/starlight/components';
+
+<Aside type="tip">
+[import-tree](https://github.com/vic/import-tree) is where it all started, the first library on the ecosystem. It recursively imports Nix modules from a directory tree with a simple extensible API.
+</Aside>
+
+## What it does
+
+import-tree recursively discovers and imports all Nix files in a directory. In Dendritic setups, where every file is Nix module (for instance flake-parts module) with the same semantic meaning, this eliminates manual import lists entirely.
+
+```nix
+{
+  inputs.import-tree.url = "github:vic/import-tree";
+  inputs.flake-parts.url = "github:hercules-ci/flake-parts";
+
+  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; }
+    (inputs.import-tree ./modules);
+}
+```
+
+By default, paths containing `/_` are ignored, giving you a convention for private/helper files.
+
+## Features
+
+- Works with NixOS, nix-darwin, home-manager, flake-parts, NixVim, and more
+- Callable as a zero-dependency flake or as a Nix library
+- Sensible defaults with configurable behavior
+- API for listing custom file types with filters and transformations
+- Extensible: add your own API methods to tailor import-tree objects
+- Useful for selecting subsets of repositories — import only the parts you need
+
+## Role in the ecosystem
+
+import-tree is the mechanism that makes [dendrix](https://github.com/vic/dendrix) possible: community repositories expose import-trees that users can selectively consume. Combined with [flake-file](https://github.com/vic/flake-file), imported modules can even declare their own flake inputs.
+
+## Links
+
+<LinkButton href="https://github.com/vic/import-tree" icon="github" variant="secondary">Source Code</LinkButton>
+<LinkButton href="https://import-tree.oeiuwq.com" variant="minimal" icon="external">Documentation</LinkButton>
+
+<LinkButton href="/sponsor/" icon="heart" variant="minimal">Support this project</LinkButton>

@@ -1,0 +1,51 @@
+---
+title: flake-aspects
+description: Zero-dependency Nix library for composable, parametric aspect composition.
+---
+
+import { LinkButton, Aside } from '@astrojs/starlight/components';
+
+<Aside type="tip">
+[flake-aspects](https://github.com/vic/flake-aspects) is the foundational library for reusable aspects. It has **zero dependencies** and works with or without flakes.
+</Aside>
+
+## What it does
+
+flake-aspects transposes `<aspect>.<class>` definitions into `<class>.<aspect>` — the standard `flake.modules` layout that `lib.evalModules` expects. On top of that, it provides a rich composition model:
+
+- **Composable DAGs** — aspects declare `includes` to form dependency graphs
+- **Nestable sub-aspects** — tree-structured aspects via `provides` / `_`, not flat string keys
+- **Parametric providers** — curried functions that produce aspects based on parameters
+- **`__functor` pattern** — override and customize any aspect
+- **Cross-class `forward`** — share configuration between NixOS, Darwin, Home-Manager, and any custom class
+
+## Example
+
+```nix
+{
+  # An aspect that provides NixOS and Home-Manager configs
+  gaming = {
+    includes = [ base ];  # dependency, not a string reference
+    nixos = { pkgs, ... }: { environment.systemPackages = [ pkgs.steam ]; };
+    homeManager = { pkgs, ... }: { home.packages = [ pkgs.lutris ]; };
+  };
+
+  # Parametric: a function that returns an aspect
+  user-shell = shell: {
+    nixos = { pkgs, ... }: { users.users.default.shell = pkgs.${shell}; };
+  };
+}
+```
+
+## Who uses it
+
+- **den** — built entirely on flake-aspects for its aspect resolution
+- **Independent users** — some people use flake-aspects [directly](https://codeberg.org/FrdrCkII/nixconf) without den, building their own Dendritic setups
+- Mixable with existing non-dendritic infrastructure
+
+## Links
+
+<LinkButton href="https://github.com/vic/flake-aspects" icon="github" variant="secondary">Source Code</LinkButton>
+<LinkButton href="https://flake-aspects.oeiuwq.com" variant="minimal" icon="external">Documentation</LinkButton>
+
+<LinkButton href="/sponsor/" icon="heart" variant="minimal">Support this project</LinkButton>

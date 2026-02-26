@@ -1,0 +1,105 @@
+---
+title: Vic's Dendritic Nix Ecosystem
+description: Composable, context-aware Nix tools — built for sharing, made for the community.
+template: splash
+hero:
+  tagline: Dendritic Nix tools — built for sharing, made for the community.
+  image:
+    html: |
+      <img width="400" height="400" style="clip-path: circle()" src="https://avatars.githubusercontent.com/u/331?v=4" />
+  actions:
+    - text: Explore the Ecosystem
+      link: /ecosystem/overview/
+      icon: right-arrow
+    - text: Sponsor Development
+      link: /sponsor/
+      icon: heart
+      variant: secondary
+    - text: Why Dendritic?
+      link: /motivation/
+      variant: minimal
+    - text: Community
+      link: /community/
+      variant: minimal
+---
+
+import { Card, CardGrid, LinkButton } from '@astrojs/starlight/components';
+
+
+## Dendritic Nix tooling
+
+Dendritic Nix is a pattern for organizing Nix configurations, vic has been exploring the limits of creating **composable, re-usable aspects** — functions that produce multi-class configurations (NixOS, Darwin, Home-Manager, and more) based on their context parameters.
+
+Over the past year, **vic** has built a suite of open-source libraries and tools that make Dendritic Nix practical, productive, and shareable. Each library is focused, dependency-minimal, and designed to work independently or together.
+
+<CardGrid>
+  <Card title="flake-aspects" icon="puzzle">
+    Zero-dependency aspect composition. Transpose `aspect.class` into standard Nix module layouts. Parametric providers, nestable sub-aspects, composable DAGs.
+    
+    <LinkButton href="/ecosystem/flake-aspects/" variant="minimal" icon="right-arrow">Learn More</LinkButton>
+  </Card>
+  <Card title="den" icon="rocket">
+    Context-aware configuration framework. Declarative pipelines, host/user schemas, batteries included. Works with or without flakes.
+    
+    <LinkButton href="/ecosystem/den/" variant="minimal" icon="right-arrow">Learn More</LinkButton>
+  </Card>
+  <Card title="flake-file" icon="document">
+    Generate `flake.nix` from typed Nix modules. Use the real Nix language for your flake inputs. Regenerate with one command.
+    
+    <LinkButton href="/ecosystem/flake-file/" variant="minimal" icon="right-arrow">Learn More</LinkButton>
+  </Card>
+  <Card title="import-tree" icon="seti:folder">
+    Recursively import Nix modules from any directory tree. The most widely adopted library for Dendritic configs.
+    
+    <LinkButton href="/ecosystem/import-tree/" variant="minimal" icon="right-arrow">Learn More</LinkButton>
+  </Card>
+  <Card title="dendrix" icon="star">
+    Community-driven distribution of Dendritic configurations — like NUR but for composable aspects. Layers, import-trees, and templates.
+    
+    <LinkButton href="/ecosystem/dendrix/" variant="minimal" icon="right-arrow">Learn More</LinkButton>
+  </Card>
+
+  <Card title="And More..." icon="nix">
+    Other supporting libraries and example repositories
+
+    <LinkButton href="/ecosystem/overview/" variant="minimal" icon="right-arrow">Learn More</LinkButton>
+  </Card>
+</CardGrid>
+
+
+## Why does this need your support?
+
+These tools are **actively maintained by a single developer**. Every library has CI, documentation, tests, and real-world users — but sustaining this takes dedicated time. [Learn how your sponsorship helps →](/sponsor/)
+
+<LinkButton href="/sponsor/" icon="heart">Become a Sponsor</LinkButton>
+
+
+## Used by real people
+
+<CardGrid>
+  <Card title="vic/vix" icon="laptop">
+    The author's own multi-host, multi-user NixOS/Darwin infrastructure — the proving ground for every Dendritic feature.
+
+    <LinkButton variant="secondary" href="https://github.com/vic/vix">Visit</LinkButton>
+  </Card>
+  <Card title="quasigod.xyz/nixconfig" icon="star">
+    Beautiful code organization with angle-brackets syntax and provides — from the author of the [Unify framework](https://codeberg.org/quasigod/unify) which was a huge inspiration for flake-aspects.
+
+    <LinkButton variant="secondary" href="https://tangled.org/quasigod.xyz/nixconfig">Visit</LinkButton>
+  </Card>
+  <Card title="drupol/infra" icon="rocket">
+    Adopted by the author of the famous ["Flipping the Configuration Matrix"](https://not-a-number.io/2025/refactoring-my-infrastructure-as-code-configurations/) blog post.
+
+    <LinkButton variant="secondary" href="https://github.com/drupol/infra/pull/124">Visit</LinkButton>
+  </Card>
+  <Card title="Growing community" icon="heart">
+    People across the Nix ecosystem are discovering Dendritic patterns for cleaner, more maintainable configurations.
+
+    <LinkButton variant="secondary" href="https://github.com/search?q=dendritic+language%3ANix&type=repositories&s=updated&o=desc">GitHub Search</LinkButton>
+  </Card>
+</CardGrid>
+
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=vic/den,vic/flake-aspects,vic/flake-file,vic/import-tree,vic/dendrix,vic/denful,vic/dendritic-unflake,vic/with-inputs&type=date&legend=top-left)](https://github.com/vic/den)

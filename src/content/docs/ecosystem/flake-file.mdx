@@ -1,0 +1,51 @@
+---
+title: flake-file
+description: Generate flake.nix from typed Nix module options — use the real Nix language for your flake inputs.
+---
+
+import { LinkButton, Aside } from '@astrojs/starlight/components';
+
+<Aside type="tip">
+[flake-file](https://github.com/vic/flake-file) lets you define flake inputs as typed Nix module options instead of the restricted flake DSL, then regenerate `flake.nix` with a single command.
+</Aside>
+
+## What it does
+
+Nix flakes require `flake.nix` to be written in a restricted subset of Nix — no imports, no `lib.mkDefault`, no computed values. flake-file removes this limitation:
+
+- **Define inputs anywhere** — in any Nix module, using full Nix language features
+- **Typed schemas** — Input and Output definitions based on Nix types
+- **One-command regeneration** — `nix run .#write-flake` produces a clean `flake.nix`
+- **Consistency checks** — `flake check` ensures generated files stay in sync
+- **Multiple backends** — supports `flake.nix`, `unflake.nix`, and `npins/`
+- **Automatic lock flattening** — via allfollow or nix-auto-follow
+
+## Example
+
+```nix
+# modules/inputs.nix — define inputs using real Nix
+{ lib, ... }: {
+  flake.inputs.nixpkgs.url = lib.mkDefault "github:NixOS/nixpkgs/nixos-${channel}";
+  flake.inputs.home-manager = {
+    url = "github:nix-community/home-manager";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
+}
+```
+
+Then regenerate:
+
+```console
+nix run .#write-flake
+```
+
+## Who uses it
+
+Used across the Dendritic ecosystem — den, checkmate, dendrix, and many flake-aspects users rely on flake-file for maintainable flake definitions.
+
+## Links
+
+<LinkButton href="https://github.com/vic/flake-file" icon="github" variant="secondary">Source Code</LinkButton>
+<LinkButton href="https://flake-file.oeiuwq.com" variant="minimal" icon="external">Documentation</LinkButton>
+
+<LinkButton href="/sponsor/" icon="heart" variant="minimal">Support this project</LinkButton>
